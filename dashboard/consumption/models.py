@@ -10,4 +10,4 @@ class UserData(models.Model):
 
 class Consumption(models.Model):
 	datetime = models.DateTimeField(default=timezone.now)
-	Consumption = models.IntegerField(default=0)
+	consumption = models.IntegerField(default=0)
