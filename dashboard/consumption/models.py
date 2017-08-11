@@ -1,6 +1,7 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django.db import models
 
-# Create your models here.
+
+class UserData(models.Model):
+    user_id = models.CharField(max_length=255)
+    area = models.CharField(max_length=255)
+    tariff = models.CharField(max_length=255)
