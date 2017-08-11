@@ -1,6 +1,8 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django.contrib import admin
+from .models import UserData
 
-# Register your models here.
+
+class UserDataAdmin(admin.ModelAdmin):
+    list_display = ('user_id', 'area', 'tariff')
+
+admin.site.register(UserData, UserDataAdmin)
