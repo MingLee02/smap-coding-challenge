@@ -1,6 +1,6 @@
 import factory
 
-from ..models import UserData
+from ..models import Consumption, UserData
  
 
 class UserDataFactory(factory.DjangoModelFactory):
@@ -10,3 +10,11 @@ class UserDataFactory(factory.DjangoModelFactory):
 
     class Meta:
         model = UserData
+
+
+class ConsumptionFactory(factory.DjangoModelFactory):
+    datetime = factory.LazyFunction(datetime.now)
+    consumption = factory.Sequence('consumption {}'.format)
+
+    class Meta:
+        model = Consumption
