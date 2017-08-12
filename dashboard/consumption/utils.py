@@ -10,5 +10,5 @@ def get_directory_contents(directory='data'):
         directory_contents = os.listdir(target_path)
     except FileNotFoundError:
         print (_('directory not found'))
-   
+    
     return directory_contents
