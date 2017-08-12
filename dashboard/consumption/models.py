@@ -9,5 +9,10 @@ class UserData(models.Model):
 
 
 class Consumption(models.Model):
+	user = models.ForeignKey(
+    	UserData,
+	    on_delete=models.CASCADE,
+	    related_name='users',
+	)
 	datetime = models.DateTimeField(default=timezone.now)
 	consumption = models.IntegerField(default=0)
