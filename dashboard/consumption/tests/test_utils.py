@@ -17,12 +17,12 @@ class TestUtils(TestCase):
     def test_get_directory_with_parameter(self):
         """Assert default folder contents can be gotten with a parameter passed"""
         response = get_directory_contents(
-            base_dir='consumption/tests/test_data',
+            base_dir='consumption/tests/',
             directory='test_data'
         )
 
         expected_url = '/Users/mlee/Sites/smap-coding-challenge/dashboard/consumption/tests/test_data'
-        expected = (expected_url, ['user_data.csv'])
+        expected = (expected_url, ['test_data_two', 'user_data.csv'])
         
         self.assertEqual(response, expected)
 
