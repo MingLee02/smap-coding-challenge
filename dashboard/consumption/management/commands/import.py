@@ -29,4 +29,5 @@ class Command(BaseCommand):
             if is_folder:
                 folders.append(file)
             else:
+                pass
                 
