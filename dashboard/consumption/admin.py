@@ -7,7 +7,7 @@ class UserDataAdmin(admin.ModelAdmin):
 
 
 class ConsumptionAdmin(admin.ModelAdmin):
-    list_display = ('datetime', 'consumption')
+    list_display = ('user', 'datetime', 'consumption')
 
 
 admin.site.register(Consumption, ConsumptionAdmin)
