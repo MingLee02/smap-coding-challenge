@@ -7,18 +7,29 @@ class TestUtils(TestCase):
     def test_get_directory(self):
         """Assert default folder contents can be gotten"""
         response = get_directory_contents()
-        expected = ['consumption', 'user_data.csv']
+        expected_path = '/Users/mlee/Sites/smap-coding-challenge/data'
+        expected_files = ['consumption', 'user_data.csv']
+
+        expected_response = expected_path, expected_files
         
-        self.assertEqual(response, expected)
+        self.assertEqual(response, expected_response)
 
     def test_get_directory_with_parameter(self):
         """Assert default folder contents can be gotten with a parameter passed"""
-        response = get_directory_contents('dashboard/consumption/tests/test_data')
-        expected = ['user_data.csv']
+        response = get_directory_contents(
+            base_dir='consumption/tests/test_data',
+            directory='test_data'
+        )
+
+        expected_url = '/Users/mlee/Sites/smap-coding-challenge/dashboard/consumption/tests/test_data'
+        expected = (expected_url, ['user_data.csv'])
         
         self.assertEqual(response, expected)
 
     def test_get_directory_with_incorrect_parameter(self):
-        response = get_directory_contents('fakkkkkeee')
+        response = get_directory_contents(directory='fakkkkkeee')
         
-        self.assertEqual(response, None)
+        self.assertEqual(
+            response,
+            ('/Users/mlee/Sites/smap-coding-challenge/fakkkkkeee', None)
+        )
