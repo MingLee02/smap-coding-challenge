@@ -21,7 +21,7 @@ class TestUtils(TestCase):
         )
 
         expected_url = '/Users/mlee/Sites/smap-coding-challenge/test_data'
-        expected = (expected_url, ['test_data_two', 'user_data.csv'])
+        expected = (expected_url, ['consumption', 'user_data.csv'])
         
         self.assertEqual(response, expected)
 
@@ -30,5 +30,5 @@ class TestUtils(TestCase):
         
         self.assertEqual(
             response,
-            ('/Users/mlee/Sites/smap-coding-challenge/fakkkkkeee', None)
+            ('/Users/mlee/Sites/smap-coding-challenge/fakkkkkeee', [])
         )
