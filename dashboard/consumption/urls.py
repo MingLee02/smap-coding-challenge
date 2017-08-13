@@ -1,8 +1,8 @@
 from django.conf.urls import url
+
 from . import views
+from .models import Consumption
 
 urlpatterns = [
-    url(r'^$', views.summary),
-    url(r'^summary/', views.summary),
-    url(r'^detail/', views.detail),
+    url(r'^$', views.summary.as_view(), name='summary'),
 ]
