@@ -1,19 +1,28 @@
-from django.db.models import Prefetch
+from django.db.models import Prefetch, Sum
 from django.views.generic import ListView
 
 from .models import Consumption, UserData
 
 
 class summary(ListView):
-	template_name = 'consumption/summary.html'
-	model = Consumption
+    template_name = 'consumption/summary.html'
+    model = UserData
+    query_set = model.objects.all()
 
-	def get_queryset(self):
-		return self.model.objects.all()
+    def get_context_data(self, **kwargs):
+        context = super(summary, self).get_context_data(**kwargs)
+        consumption = []
 
-	def get_context_data(self, **kwargs):
-		context = super(summary, self).get_context_data(**kwargs)
-		context['users'] = UserData.objects.all()
+        for user in self.model.objects.all():
+            total_consumption = Consumption.objects.filter(
+                user=user
+            ).aggregate(total=Sum('consumption'))
 
-		return context
+            consumption.append({
+                'user': user,
+                'consumption': total_consumption['total']
+            })
+
+        context['consumption'] = consumption
+        return context
   

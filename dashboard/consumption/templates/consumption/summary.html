@@ -6,6 +6,11 @@
 {% block content %}
 <h1>summary page</h1>
 
+ {% for item in consumption %}
+    {{item.user}}
+    {{item.consumption}}
+ {% endfor %}
+
 <table>
     <thead>
         <tr>
@@ -21,7 +26,7 @@
         </tr>
     </thead>
     <tbody>
-        {% for user in users%}
+        {% for user in object_list %}
             <tr>
                 <td>{{ user.user_id }}</td>
                 <td>{{ user.area }}</td>
