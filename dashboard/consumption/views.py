@@ -1,18 +1,19 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+from django.db.models import Prefetch
+from django.views.generic import ListView
 
-from django.shortcuts import render
-
-# Create your views here.
+from .models import Consumption, UserData
 
 
-def summary(request):
-  context = {
-      'message': 'Hello!',
-  }
-  return render(request, 'consumption/summary.html', context)
+class summary(ListView):
+	template_name = 'consumption/summary.html'
+	model = Consumption
 
-def detail(request):
-  context = {
-  }
-  return render(request, 'consumption/detail.html', context)
+	def get_queryset(self):
+		return self.model.objects.all()
+
+	def get_context_data(self, **kwargs):
+		context = super(summary, self).get_context_data(**kwargs)
+		context['users'] = UserData.objects.all()
+
+		return context
+  
