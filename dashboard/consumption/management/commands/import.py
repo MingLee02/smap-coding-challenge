@@ -2,6 +2,7 @@ import os
 
 from django.core.management.base import BaseCommand
 from django.db import transaction
+from django.utils.translation import ugettext_lazy as _
 
 from tablib import Dataset
 
@@ -17,7 +18,7 @@ class Command(BaseCommand):
             'foldername',
             nargs='*',
             type=str,
-            help='Folder name',
+            help=_('Folder name'),
         )
 
     @staticmethod
@@ -76,4 +77,6 @@ class Command(BaseCommand):
             for file in folder_files:
                 if '.csv' in file:
                     self.create_consumption_data(folder_path, file)
+
+        print(_('Import Finished'))
                 
