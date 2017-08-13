@@ -1,5 +1,5 @@
 from django.db.models import Prefetch, Sum
-from django.views.generic import ListView
+from django.views.generic import DetailView, ListView
 
 from .models import Consumption, UserData
 
@@ -25,4 +25,7 @@ class summary(ListView):
 
         context['consumption'] = consumption
         return context
-  
+
+
+class detail(DetailView):
+    pass
