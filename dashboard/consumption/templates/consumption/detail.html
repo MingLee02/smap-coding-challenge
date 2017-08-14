@@ -1,5 +1,13 @@
 {% extends 'consumption/layout.html' %}
 
 {% block content %}
+	Id {{object.user_id}}
+	Area {{object.area}}
+	Tariff {{object.tariff}}
+
+	{% for user in object.users.all %}
+		{{user.datetime}}
+		{{ user.consumption}}
+	{% endfor %}
 
 {% endblock %}

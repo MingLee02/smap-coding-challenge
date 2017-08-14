@@ -14,7 +14,7 @@ class TestSummaryUrl(TestCase):
 class TestDetailUrl(TestCase):
 	def test_url(self):
 		user = UserDataFactory.create()
-		url = reverse('detail', kwargs={'user_id': user.user_id})
-		expected_url = '/detail/{}'.format(user.user_id)
+		url = reverse('detail', kwargs={'pk': user.pk})
+		expected_url = '/detail/{}'.format(user.pk)
 
 		self.assertEqual(url, expected_url)

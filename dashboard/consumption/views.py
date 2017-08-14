@@ -29,4 +29,5 @@ class summary(ListView):
 
 
 class detail(DetailView):
-    pass
+    template_name = 'consumption/detail.html'
+    model = UserData

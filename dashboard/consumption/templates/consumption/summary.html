@@ -31,7 +31,7 @@
                 <td>{{ user.user_id }}</td>
                 <td>{{ user.area }}</td>
                 <td>{{ user.tariff }}</td>
-                <td><a href="{% url 'detail' user_id=user.user_id %}">User Detail</a></td>
+                <td><a href="{% url 'detail' pk=user.pk %}">User Detail</a></td>
             </tr>
         {% endfor %}
     </tbody>
