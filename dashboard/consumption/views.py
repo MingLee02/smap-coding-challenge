@@ -8,6 +8,7 @@ class summary(ListView):
     template_name = 'consumption/summary.html'
     model = UserData
     query_set = model.objects.all()
+    paginate_by = 10
 
     def get_context_data(self, **kwargs):
         context = super(summary, self).get_context_data(**kwargs)
