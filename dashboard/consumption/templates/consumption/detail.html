@@ -4,20 +4,24 @@
 {% load static %}
 
 {% block content %}
-	{% trans "Id" %}: {{object.user_id}}
-	{% trans "Area" %}: {{object.area}}
-	{% trans "Tariff" %}: {{object.tariff}}
+    <span><a href="{% url 'summary'  %}">{% trans "Back" %}</a></span>
 
-	<div style="height:500px;">
+    <ul>
+        <li>{% trans "Id" %}: {{object.user_id}}</li>
+        <li>{% trans "Area" %}: {{object.area}}</li>
+        <li>{% trans "Tariff" %}: {{object.tariff}}</li>
+    </ul>
+
+    <div style="height:500px;">
         <canvas id="myChart"></canvas>
     </div>
 
     <div style="display:none;">
-		{% for user in object.users.all %}
-			<div class='cons_users'>{{user.datetime|date:"M d, Y"}}</div>
-			<div class='cons_consumption'>{{ user.consumption}}</div>
-		{% endfor %}
-	</div>
+        {% for user in object.users.all %}
+            <div class='cons_users'>{{user.datetime|date:"M d, Y"}}</div>
+            <div class='cons_consumption'>{{ user.consumption}}</div>
+        {% endfor %}
+    </div>
 {% endblock %}
 
 {% block js-foot %}
