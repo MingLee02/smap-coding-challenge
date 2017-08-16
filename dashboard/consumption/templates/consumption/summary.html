@@ -4,11 +4,12 @@
 {% load static %}
 
 {% block content %}
-    <h1>summary page</h1>
+    <h1>{% trans "Summary Page" %}</h1>
+
     <div style="display:none;">
         {% for item in consumption %}
-            <div class='cons_users'>{{item.user_id}}</div>
-            <div class='cons_consumption'>{{item.total_consumption}}</div>
+            <div class='cons_users'>{{ item.user_id }}</div>
+            <div class='cons_consumption'>{{ item.total_consumption }}</div>
         {% endfor %}
     </div>
 
@@ -36,7 +37,7 @@
                     <td>{{ user.user_id }}</td>
                     <td>{{ user.area }}</td>
                     <td>{{ user.tariff }}</td>
-                    <td><a href="{% url 'detail' pk=user.pk %}">User Detail</a></td>
+                    <td><a href="{% url 'detail' pk=user.pk %}">{% trans "Details" %}</a></td>
                 </tr>
             {% endfor %}
         </tbody>

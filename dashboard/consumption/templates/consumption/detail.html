@@ -4,9 +4,9 @@
 {% load static %}
 
 {% block content %}
-	Id {{object.user_id}}
-	Area {{object.area}}
-	Tariff {{object.tariff}}
+	{% trans "Id" %}: {{object.user_id}}
+	{% trans "Area" %}: {{object.area}}
+	{% trans "Tariff" %}: {{object.tariff}}
 
 	<div style="height:500px;">
         <canvas id="myChart"></canvas>
