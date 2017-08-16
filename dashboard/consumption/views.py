@@ -12,19 +12,9 @@ class summary(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(summary, self).get_context_data(**kwargs)
-        consumption = []
-
-        for user in self.model.objects.all():
-            total_consumption = Consumption.objects.filter(
-                user=user
-            ).aggregate(total=Sum('consumption'))
-
-            consumption.append({
-                'user': user,
-                'consumption': total_consumption['total']
-            })
-
-        context['consumption'] = consumption
+        context['consumption'] = UserData.objects.annotate(
+            total_consumption=Sum('users__consumption')
+        )
         return context
 
 
