@@ -1,13 +1,25 @@
 {% extends 'consumption/layout.html' %}
 
+{% load i18n %}
+{% load static %}
+
 {% block content %}
 	Id {{object.user_id}}
 	Area {{object.area}}
 	Tariff {{object.tariff}}
 
-	{% for user in object.users.all %}
-		{{user.datetime}}
-		{{ user.consumption}}
-	{% endfor %}
+	<div style="height:500px;">
+        <canvas id="myChart"></canvas>
+    </div>
 
+    <div style="display:none;">
+		{% for user in object.users.all %}
+			<div class='cons_users'>{{user.datetime|date:"M d, Y"}}</div>
+			<div class='cons_consumption'>{{ user.consumption}}</div>
+		{% endfor %}
+	</div>
 {% endblock %}
+
+{% block js-foot %}
+    <script src="{% static "scripts/summary-graph.js" %}"></script>
+{% endblock js-foot %}

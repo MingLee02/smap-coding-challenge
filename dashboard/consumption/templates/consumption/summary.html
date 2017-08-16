@@ -1,60 +1,68 @@
 {% extends 'consumption/layout.html' %}
 
 {% load i18n %}
-
+{% load static %}
 
 {% block content %}
-<h1>summary page</h1>
-
- {% for item in consumption %}
-    {{item.user}}
-    {{item.consumption}}
- {% endfor %}
-
-<table>
-    <thead>
-        <tr>
-            <th>
-                {% trans "User Id" %}
-            </th>
-            <th>
-                {% trans "Area" %}
-            </th>
-            <th>
-                {% trans "Tariff" %}
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for user in object_list %}
-            <tr>
-                <td>{{ user.user_id }}</td>
-                <td>{{ user.area }}</td>
-                <td>{{ user.tariff }}</td>
-                <td><a href="{% url 'detail' pk=user.pk %}">User Detail</a></td>
-            </tr>
+    <h1>summary page</h1>
+    <div style="display:none;">
+        {% for item in consumption %}
+            <div class='cons_users'>{{item.user_id}}</div>
+            <div class='cons_consumption'>{{item.total_consumption}}</div>
         {% endfor %}
-    </tbody>
-</table>
+    </div>
 
-{% if page_obj.has_previous %}
-    <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
-{% else %}
-    <li class="disabled"><span>&laquo;</span></li>
-{% endif %}
+    <div style="height:500px;">
+        <canvas id="myChart"></canvas>
+    </div>
 
-{% for i in paginator.page_range %}
-    {% if page_obj.number == i %}
-        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    {% trans "User Id" %}
+                </th>
+                <th>
+                    {% trans "Area" %}
+                </th>
+                <th>
+                    {% trans "Tariff" %}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in object_list %}
+                <tr>
+                    <td>{{ user.user_id }}</td>
+                    <td>{{ user.area }}</td>
+                    <td>{{ user.tariff }}</td>
+                    <td><a href="{% url 'detail' pk=user.pk %}">User Detail</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if page_obj.has_previous %}
+        <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
     {% else %}
-        <li><a href="?page={{ i }}">{{ i }}</a></li>
+        <li class="disabled"><span>&laquo;</span></li>
     {% endif %}
-{% endfor %}
 
-{% if page_obj.has_next %}
-    <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
-{% else %}
-    <li class="disabled"><span>&raquo;</span></li>
-{% endif %}
+    {% for i in paginator.page_range %}
+        {% if page_obj.number == i %}
+            <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+        {% else %}
+            <li><a href="?page={{ i }}">{{ i }}</a></li>
+        {% endif %}
+    {% endfor %}
 
+    {% if page_obj.has_next %}
+        <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+    {% else %}
+        <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
 {% endblock %}
+
+{% block js-foot %}
+    <script src="{% static "scripts/summary-graph.js" %}"></script>
+{% endblock js-foot %}
