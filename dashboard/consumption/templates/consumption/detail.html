@@ -18,8 +18,8 @@
 
     <div style="display:none;">
         {% for user in object.users.all %}
-            <div class='cons_users'>{{user.datetime|date:"M d, Y"}}</div>
-            <div class='cons_consumption'>{{ user.consumption}}</div>
+            <div class='x-axis'>{{ user.datetime|date:"M d, Y" }}</div>
+            <div class='y-axis'>{{ user.consumption}}</div>
         {% endfor %}
     </div>
 {% endblock %}

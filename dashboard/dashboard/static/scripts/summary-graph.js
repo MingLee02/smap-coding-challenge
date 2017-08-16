@@ -2,11 +2,11 @@ $( document ).ready(function() {
     var users = [];
     var consumption = [];
 
-    $(".cons_users").each(function( index ) {
+    $(".x-axis").each(function( index ) {
         users.push($(this).text())
     });
 
-    $(".cons_consumption").each(function( index ) {
+    $(".y-axis").each(function( index ) {
         consumption.push($(this).text())
     });
 
@@ -18,7 +18,7 @@ $( document ).ready(function() {
             datasets: [{
                 data: consumption,
                 label: "Consumption",
-                fill: false
+                fill: false,
             }]
         },
         options: {
@@ -27,6 +27,9 @@ $( document ).ready(function() {
             title: {
                 display: true,
                 text: 'Total Consumption Across all Users'
+            },
+            legend: {
+                display: false,
             }
         }
 
