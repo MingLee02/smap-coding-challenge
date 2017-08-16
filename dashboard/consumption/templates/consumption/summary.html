@@ -6,14 +6,14 @@
 {% block content %}
     <h1>{% trans "Summary Page" %}</h1>
 
-    <div style="display:none;">
+    <div class="graph-data-wrapper">
         {% for item in consumption %}
             <div class='x-axis'>{{ item.user_id }}</div>
             <div class='y-axis'>{{ item.total_consumption }}</div>
         {% endfor %}
     </div>
 
-    <div style="height:500px;">
+    <div class="graph-wrapper">
         <canvas id="myChart"></canvas>
     </div>
 

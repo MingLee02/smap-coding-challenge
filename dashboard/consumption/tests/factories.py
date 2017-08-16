@@ -16,6 +16,7 @@ class UserDataFactory(factory.DjangoModelFactory):
 class ConsumptionFactory(factory.DjangoModelFactory):
     datetime = factory.LazyFunction(datetime.datetime.now)
     consumption = factory.Sequence('consumption {}'.format)
+    user = factory.SubFactory(UserDataFactory)
 
     class Meta:
         model = Consumption

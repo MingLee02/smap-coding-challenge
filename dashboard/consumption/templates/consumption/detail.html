@@ -12,11 +12,11 @@
         <li>{% trans "Tariff" %}: {{object.tariff}}</li>
     </ul>
 
-    <div style="height:500px;">
+    <div class="graph-wrapper">
         <canvas id="myChart"></canvas>
     </div>
 
-    <div style="display:none;">
+    <div class="graph-data-wrapper">
         {% for user in object.users.all %}
             <div class='x-axis'>{{ user.datetime|date:"M d, Y" }}</div>
             <div class='y-axis'>{{ user.consumption}}</div>

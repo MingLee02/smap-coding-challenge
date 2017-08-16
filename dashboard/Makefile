@@ -1,6 +1,9 @@
+help:
+	@echo "Usage:"
+	@echo "make help           -- display this help"
+	@echo "make test           -- run the tests"
+	@echo "make runserver      -- run the server"
 
-install:
-	python manage.py migrate
 
 test:
 	coverage run manage.py test --keepdb --verbosity=1
